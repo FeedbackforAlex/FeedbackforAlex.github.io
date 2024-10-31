@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --background: #f0f9ff;
+    }
+    
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      background: var(--background);
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+    
+    .survey-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .language-selector {
+      text-align: right;
+      margin-bottom: 1rem;
+    }
+
+    .language-btn {
+      padding: 0.3rem 0.6rem;
+      border: 1px solid var(--primary);
+      background: white;
+      color: var(--primary);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+
+    .language-btn.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .language-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #25D366;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      text-decoration: none;
+      margin-top: 1rem;
+      transition: transform 0.2s;
+    }
+
+    .whatsapp-btn:hover {
+      transform: translateY(-2px);
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .question {
+      margin-bottom: 2rem;
+    }
+    
+    label {
+      display: block;
+      margin: 0.5rem 0;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+    
+    label:hover {
+      background: var(--background);
+    }
+    
+    input[type="radio"], input[type="checkbox"] {
+      margin-right: 0.5rem;
+    }
+    
+    textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid #ddd;
+      border-radius: 4px;
+      margin-top: 0.5rem;
+      font-family: inherit;
+    }
+    
+    button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 1rem;
+      transition: background 0.2s;
+    }
+    
+    button:hover {
+      background: var(--primary-dark);
+    }
+    
+    .thank-you {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    .emoji {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="survey-card" id="survey-form">
+      <div class="language-selector">
+        <button class="language-btn active" onclick="switchLanguage('en')">🇬🇧 EN</button>
+        <button class="language-btn" onclick="switchLanguage('nl')">🇳🇱 NL</button>
+      </div>
+
+      <div class="header">
+        <h1 data-en="The 'Thanks, But No Thanks' Survey 🎭" data-nl="De 'Bedankt, Maar Nee Bedankt' Enquête 🎭">The "Thanks, But No Thanks" Survey 🎭</h1>
+        <p data-en="Help me improve my game! Promise I won't cry... much 😅" data-nl="Help me mijn game te verbeteren! Ik beloof dat ik niet zal huilen... nou ja, misschien een beetje 😅">Help me improve my game! Promise I won't cry... much 😅</p>
+      </div>
+      
+      <form id="feedback-form">
+        <div class="question">
+          <h3 data-en="What made you head for the exit? 🚪" data-nl="Wat deed je afhaken? 🚪">What made you head for the exit? 🚪</h3>
+          <label><input type="checkbox" name="reason"> <span data-en="Too much talk about climbing 🧗‍♂️" data-nl="Te veel gepraat over klimmen 🧗‍♂️">Too much talk about climbing 🧗‍♂️</span></label>
+          <label><input type="checkbox" name="reason"> <span data-en="Conversation felt one-sided 💭" data-nl="Gesprek voelde eenzijdig 💭">Conversation felt one-sided 💭</span></label>
+          <label><input type="checkbox" name="reason"> <span data-en="Messages were too long/short 📝" data-nl="Berichten waren te lang/kort 📝">Messages were too long/short 📝</span></label>
+          <label><input type="checkbox" name="reason"> <span data-en="Humor didn't land quite right 😅" data-nl="Humor kwam niet helemaal over 😅">Humor didn't land quite right 😅</span></label>
+          <label><input type="checkbox" name="reason"> <span data-en="Different energy levels 🔋" data-nl="Verschillende energie levels 🔋">Different energy levels 🔋</span></label>
+          <label><input type="checkbox" name="reason"> <span data-en="That British accent attempt was catastrophic 🎩" data-nl="Die poging tot Brits accent was catastrofaal 🎩">That British accent attempt was catastrophic 🎩</span></label>
+        </div>
+        
+        <div class="question">
+          <h3 data-en="How would you rate our chat vibe? 💫" data-nl="Hoe zou je onze chat vibe beoordelen? 💫">How would you rate our chat vibe? 💫</h3>
+          <label><input type="radio" name="conversation"> <span data-en="Could've used more questions and back-and-forth 🎾" data-nl="Had meer vragen en gesprek over en weer kunnen gebruiken 🎾">Could've used more questions and back-and-forth 🎾</span></label>
+          <label><input type="radio" name="conversation"> <span data-en="Started strong, fizzled like a day-old soda 📉" data-nl="Begon sterk, doofde uit als een dagoud drankje 📉">Started strong, fizzled like a day-old soda 📉</span></label>
+          <label><input type="radio" name="conversation"> <span data-en="Too intense, needed more chill ❄️" data-nl="Te intens, had meer rust nodig ❄️">Too intense, needed more chill ❄️</span></label>
+          <label><input type="radio" name="conversation"> <span data-en="Too chill, needed more spark ⚡" data-nl="Te rustig, had meer vonken nodig ⚡">Too chill, needed more spark ⚡</span></label>
+        </div>
+        
+        <div class="question">
+          <h3 data-en="Any tips for my future matches? 🎯" data-nl="Tips voor mijn toekomstige matches? 🎯">Any tips for my future matches? 🎯</h3>
+          <textarea data-en-placeholder="Share your wisdom - I can handle it! 💪" data-nl-placeholder="Deel je wijsheid - Ik kan het aan! 💪" placeholder="Share your wisdom - I can handle it! 💪" rows="4"></textarea>
+        </div>
+        
+        <button type="submit" onclick="showThankYou(); return false;" data-en="Submit Brutal Honesty 🎨" data-nl="Verstuur Eerlijke Feedback 🎨">Submit Brutal Honesty 🎨</button>
+
+        <center>
+          <a href="https://wa.me/+1234567890" class="whatsapp-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            <span data-en="Change your mind? Message me!" data-nl="Van gedachten veranderd? Stuur me een bericht!">Change your mind? Message me!</span>
+          </a>
+        </center>
+      </form>
+    </div>
+    
+    <div class="survey-card thank-you" id="thank-you">
+      <div class="emoji">🙏</div>
+      <h2 data-en="Thanks for your feedback!" data-nl="Bedankt voor je feedback!">Thanks for your feedback!</h2>
+      <p data-en="Your honesty is appreciated. Here's to better matches ahead! 🌟" data-nl="Je eerlijkheid wordt gewaardeerd. Op naar betere matches! 🌟">Your honesty is appreciated. Here's to better matches ahead! 🌟</p>
+      <p data-en="P.S. Those climbing lessons are still available if you change your mind... 😉" data-nl="P.S. Die klimlessen zijn nog steeds beschikbaar als je van gedachten verandert... 😉">P.S. Those climbing lessons are still available if you change your mind... 😉</p>
+    </div>
+  </div>
+
+  <script>
+    function showThankYou() {
+      document.getElementById('survey-form').style.display = 'none';
+      document.getElementById('thank-you').style.display = 'block';
+    }
+
+    function switchLanguage(lang) {
+      // Update active button state
+      document.querySelectorAll('.language-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent.includes(lang.toUpperCase())) {
+          btn.classList.add('active');
+        }
+      });
+
+      // Update all translatable elements
+      document.querySelectorAll('[data-' + lang + ']').forEach(element => {
+        element.textContent = element.getAttribute('data-' + lang);
+      });
+
+      // Update textarea placeholder
+      const textarea = document.querySelector('textarea');
+      if (textarea) {
+        textarea.placeholder = textarea.getAttribute('data-' + lang + '-placeholder');
+      }
+    }
+  </script>
+</body>
+</html>
